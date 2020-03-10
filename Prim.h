@@ -1,21 +1,19 @@
 #ifndef PRIM_HEADER
 #define PRIM_HEADER
+#include <stdio.h>
+#include <iostream>
+#include <stdlib.h>
 
-struct heapNode {
-	heapNode* leftChild;
-	heapNode* rightChild;
-	heapNode* parent;
-	int value;
-}
-
-class Min_Heap {
+class MinHeap {
 	public:
-		Min_Heap();
-		int getMin();
-		void extractMin();
-		void insert(int value);
+		int getMin(int arr[]);
+		void heapify(int arr[]);
+		void extractMin(int arr[]);
+		void insert(int arr[],int val);
 	private:
-		heapNode* root;
-}
+		int max;
+		int values[];
+
+};
 
 #endif
