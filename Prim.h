@@ -11,7 +11,7 @@ class MinHeap {
 		void extractMin(int arr[]);
 		void insert(int arr[],int val);
 	private:
-		int max;
+		int size;
 		int values[];
 
 };
