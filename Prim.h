@@ -35,8 +35,8 @@ class Graph {
 	public:
 		Graph(std::string fileName);
 	private:
-		std::vector<AdjacencyList> aLists;
-		std::vector<int> nodes;
+		std::vector<AdjacencyList*> aLists;
+		std::vector <int> nodes;
 };
 
 #endif

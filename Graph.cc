@@ -4,13 +4,13 @@
 #include <stdlib.h>
 #include <fstream>
 
-
 Graph::Graph(std::string fileName) {
 	//readfile
 	int srcNode,dstNode,numNodes,lineLength,wordNum,index1,index2;
 	int currentNode;
 	int firstLine=1;
 	int temp=2;
+	AdjacencyList* currentAdjList;
 	float weight;
 	std::string line;
 	std::ifstream myfile (fileName.c_str());
@@ -38,18 +38,19 @@ Graph::Graph(std::string fileName) {
 					}
 				}
 			}
-			aListNode* adjacencyList=new aListNode;
-			adjacencyList->vertex=dstNode;
-			adjacencyList->weight=weight;
 
 			if(srcNode==currentNode) {
 				//if still on same node, then add to current alist vector
+				currentAdjList->insert(dstNode,weight);
 			}
 			else {
 				//if on new node, create new aList vector and push into aLists
 				//also create new node and push into nodes
-		//		aLists.push_back(adjacencyList);
-		//		nodes.push_back()
+				AdjacencyList* adjList=new AdjacencyList();
+				adjList->insert(dstNode,weight);
+				currentAdjList=adjList;
+				aLists.push_back(adjList);
+				nodes.push_back(srcNode);
 			}
 			
 			/*std::cout<< "source:_" << srcNode << "_dst:_" << dstNode << "weight_"  <<weight << "\n";
