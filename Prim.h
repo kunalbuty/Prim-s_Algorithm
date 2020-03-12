@@ -26,15 +26,27 @@ struct aListNode {
 
 class AdjacencyList {
 	public:
-	void insert(int vertex, float weight);
+		void insert(int vertex, float weight);
+		int getSize();
+		aListNode* getAdjList(int j);
+		int size;
+		
 	private:
 		std::vector<aListNode*> aList;
+
 };
 
 class Graph {
 	public:
 		Graph(std::string fileName);
+		int getDstNode(int i,int j);
+		int getNode(int i);
+		float getWeight(int i,int j);
+		int getSize();
+		int getAListSize(int i);
+		
 	private:
+		int size;
 		std::vector<AdjacencyList*> aLists;
 		std::vector <int> nodes;
 };

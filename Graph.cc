@@ -6,10 +6,10 @@
 
 Graph::Graph(std::string fileName) {
 	//readfile
-	int srcNode,dstNode,numNodes,lineLength,wordNum,index1,index2;
+	int srcNode,dstNode,lineLength,wordNum,index1,index2;
 	int currentNode;
 	int firstLine=1;
-	int temp=2;
+	int temp=20;
 	AdjacencyList* currentAdjList;
 	float weight;
 	std::string line;
@@ -18,7 +18,11 @@ Graph::Graph(std::string fileName) {
 		while(getline(myfile,line)) {
 			if(firstLine==1) {
 				firstLine=0;
-				numNodes=atoi(line.c_str());
+				size=atoi(line.c_str());
+				//std::cout << numNodes << "\n";
+				continue;
+			}
+			if(line=="") {
 				continue;
 			}
 			wordNum=0;
@@ -42,18 +46,22 @@ Graph::Graph(std::string fileName) {
 			if(srcNode==currentNode) {
 				//if still on same node, then add to current alist vector
 				currentAdjList->insert(dstNode,weight);
+				currentAdjList->size++;
 			}
 			else {
 				//if on new node, create new aList vector and push into aLists
 				//also create new node and push into nodes
 				AdjacencyList* adjList=new AdjacencyList();
 				adjList->insert(dstNode,weight);
-				currentAdjList=adjList;
+				adjList->size=1;
 				aLists.push_back(adjList);
 				nodes.push_back(srcNode);
+				currentNode=srcNode;
+				currentAdjList=adjList;
+
 			}
 			
-			/*std::cout<< "source:_" << srcNode << "_dst:_" << dstNode << "weight_"  <<weight << "\n";
+			std::cout<< "source: " << srcNode << " dst: " << dstNode << " weight: "  <<weight << "\n";
 			if(temp==0) {
 				break;
 			}
@@ -61,12 +69,27 @@ Graph::Graph(std::string fileName) {
 				temp--;
 
 			}
-			*/
+			
 		}
 	}
-	//read line 1
-	/*while reading file*/ {
+}
 
-	}
+int Graph::getDstNode(int i, int j) {
+	return aLists.at(i)->getAdjList(j)->vertex;
+}
 
+float Graph::getWeight(int i, int j) {
+	return aLists.at(i)->getAdjList(j)->weight;
+}
+
+int Graph::getNode(int i) {
+	return nodes.at(i);
+}
+
+int Graph::getSize() {
+	return size;
+}
+
+int Graph::getAListSize(int i) {
+	return aLists.at(i)->getSize();
 }
