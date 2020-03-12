@@ -8,14 +8,19 @@
 
 class MinHeap {
 	public:
-		int getMin(int arr[]);
-		void heapify(int arr[]);
-		void extractMin(int arr[]);
-		void insert(int arr[],int val);
+		MinHeap(int s);
+		void heapify(int i);
+		int getMin();
+		void extractMin();
+		void insert(int val);
+		
+		int getParent(int i) {return (i-1)/2; }
+		int getLeft(int i) { return (2*i+1); }
+		int getRight(int i) { return (2*i+2); }
 	private:
 		int size;
-		int priority;
-		int values[];
+		int capacity;
+		int *values;
 };
 
 struct aListNode {
