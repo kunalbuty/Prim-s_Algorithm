@@ -83,23 +83,23 @@ Graph::Graph(std::string fileName) {
 	myfile.close(); 
 }
 
-int Graph::getDstNode(int i, int j) {
-	return aLists.at(i)->getAdjListVals(j)->vertex;
+int Graph::getDstNode(int srcNode,int edgeNum) {
+	return aLists.at(srcNode)->getAdjListVals(edgeNum)->vertex;
 }
 
-float Graph::getWeight(int i, int j) {
-	return aLists.at(i)->getAdjListVals(j)->weight;
+float Graph::getWeight(int srcNode,int edgeNum) {
+	return aLists.at(srcNode)->getAdjListVals(edgeNum)->weight;
 }
 
-int Graph::getNode(int i) {
-	return nodes.at(i);
+int Graph::getNode(int srcNode) {
+	return nodes.at(srcNode);
 }
 
 int Graph::getSize() {
 	return nodes.size();
 }
 
-int Graph::getAListSize(int i) {
+int Graph::getAListSize(int srcNode) {
 	//assert(aLists.at(i)->getSize());
-	return aLists.at(i)->getSize();
+	return aLists.at(srcNode)->getSize();
 }

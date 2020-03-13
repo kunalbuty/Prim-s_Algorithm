@@ -46,11 +46,11 @@ class AdjacencyList {
 class Graph {
 	public:
 		Graph(std::string fileName);
-		int getDstNode(int i,int j);
-		int getNode(int i);
-		float getWeight(int i,int j);
+		int getDstNode(int srcNode,int edgeNum);
+		int getNode(int srcNode);
+		float getWeight(int srcNode,int edgeNum);
 		int getSize();
-		int getAListSize(int i);
+		int getAListSize(int srcNode);
 		
 	private:
 		int size;
