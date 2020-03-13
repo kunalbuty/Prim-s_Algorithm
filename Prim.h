@@ -11,7 +11,7 @@ class MinHeap {
 		MinHeap(int s);
 		void heapify(int i);
 		int getMin();
-		void extractMin();
+		int extractMin();
 		void insert(int val);
 		
 		int getParent(int i) {return (i-1)/2; }
@@ -33,11 +33,13 @@ class AdjacencyList {
 	public:
 		void insert(int vertex, float weight);
 		int getSize();
-		aListNode* getAdjList(int j);
+		aListNode* getAdjListVals(int j);
 		int size;
+
 		
 	private:
 		std::vector<aListNode*> aList;
+
 
 };
 
