@@ -3,7 +3,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-MinHead::MinHeap(int s)
+MinHeap::MinHeap(int s)
 {
 	size = 0;
 	capacity = s;
@@ -16,9 +16,9 @@ void MinHeap::heapify(int i) {
 	int r = getRight(i);
 	int min = i;
 	int temp;
-	if(l < size && values[l] < value[i])
+	if(l < size && values[l] < values[i])
 		min = l;
-	if(r < size && values[r] < value[min])
+	if(r < size && values[r] < values[min])
 		min = r;
 	if(min != i)
 	{
@@ -30,8 +30,8 @@ void MinHeap::heapify(int i) {
 }
 
 int MinHeap::getMin() {		//completed
-	if(arr[0]) {
-		return arr[0];
+	if(values[0]) {
+		return values[0];
 	}
 	else {
 		return -1;
@@ -60,7 +60,7 @@ void MinHeap::insert(int val) {
 	//inserts value into heapified array
 	if(size == capacity)
 	{
-		cout << "ERROR: Priority Queue full\n";
+		std::cout << "ERROR: Priority Queue full\n";
 		return;
 	}
 
