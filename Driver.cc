@@ -4,7 +4,7 @@
 
 int main (int argc, char* argv[]) {
 	Graph* g=new Graph("input.txt");
-	
+	MST_Prim(g);	
 	/*
 	//NOTE! Graph works fine, but this print function below doesnt print for nodes with only one dstNode/edge
 	for(int i=0;i<g->getSize();i++) {

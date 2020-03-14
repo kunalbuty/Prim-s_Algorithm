@@ -6,21 +6,32 @@
 #include <vector>
 #include <string.h>
 
+struct MinHeapNode {
+	int v;
+	int key;
+};
+
 class MinHeap {
 	public:
 		MinHeap(int s);
 		void heapify(int i);
-		int getMin();
-		int extractMin();
-		void insert(int val);
-		
+		MinHeapNode* getMin();
+		MinHeapNode* extractMin();
+		void insert(int v, int val);
+		void keyDecrease(int v, int key);
+
 		int getParent(int i) {return (i-1)/2; }
 		int getLeft(int i) { return (2*i+1); }
 		int getRight(int i) { return (2*i+2); }
+		int getSize() { return size; }
+		int getPos(int p) { return pos[p]; }
+		int setPos(int x) { pos[x] = x; }
+		int setSize(int s) { size = s; } 
 	private:
 		int size;
 		int capacity;
-		int *values;
+		int* pos;
+		struct MinHeapNode** arr;
 };
 
 struct aListNode {
@@ -57,5 +68,7 @@ class Graph {
 		std::vector<AdjacencyList*> aLists;
 		std::vector <int> nodes;
 };
+
+void MST_Prim(Graph* g);
 
 #endif
